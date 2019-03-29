@@ -3,13 +3,15 @@ Example of the construction of a sample of sources from Gaia DR2 with all recomm
 
 ## Goals of this example project
 * Show how to contruct from the Gaia DR2 archive data a 'clean', aka 'gold', sample of sources for 6D phase
-  space studies to which all filtering recommendations from the Gaia Collaboration have been applied.
+  space studies to which all data quality control recommendations from the Gaia Collaboration have been applied.
+  * In particular the recommendations from the [Gaia DR2 Known Issues pages](https://www.cosmos.esa.int/web/gaia/dr2-known-issues).
 * The resulting data set is intended for those who want to start working on Gaia DR2 data without having
   to worry about data quality issues (such as spurious astrometry, radial velocities, unreliable
-  photometry, etc). 
+  photometry, etc).
   * Undergraduate students who want to do a Gaia research project.
   * The gold sample as a teaching tool; what should I expect to see in a clean Gaia DR2 sample?
-* The 'gold' sample is thus 'pure' but certainly not complete!
+* The 'gold' sample is thus 'pure' but certainly not complete and will suffer from non-trivial selection
+  effects!
 
 ## Installation
 * Clone the repository or download the Python notebook.
