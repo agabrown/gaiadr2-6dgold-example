@@ -1,6 +1,9 @@
 # gaiadr2-6dgold-example
 Example of the construction of a sample of sources from Gaia DR2 with all recommend data quality filtering applied.
 
+## Credits
+This project grew out of the [Santa Barbara Gaia Sprint 2019](http://gaia.lol/2019SB.html), hosted at KITP, and the KITP programme ["Dynamical Models for Stars and Gas in Galaxies in the Gaia Era"](https://www.kitp.ucsb.edu/activities/gaia19). Thanks to Juna Kollmeier for suggesting the creation of Gaia Gold samples.
+
 ## Goals of this example project
 * Show how to contruct from the Gaia DR2 archive data a 'clean', aka 'gold', sample of sources for 6D phase
   space studies to which all data quality control recommendations from the Gaia Collaboration have been applied.
