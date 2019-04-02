@@ -28,8 +28,8 @@ This project grew out of the [Santa Barbara Gaia Sprint 2019](http://gaia.lol/20
 ## Usage
 * The notebook explains how the 6D Gold sample is created from the data downloaded from the Gaia DR2
   archive.
-* Use the command-line tool `build_6dgold_tables.py` to build the 6D Gold table(s) in FITS format so they
-  can be used easily, loaded into [topcat](http://www.star.bris.ac.uk/~mbt/topcat/), etc.
+* Use the command-line tool `build_6dgold_tables.py` to build the 6D Gold table(s) in FITS format so the
+  Gold sample be re-used easily, loaded into [topcat](http://www.star.bris.ac.uk/~mbt/topcat/), etc.
 
 ## Required python packages
 * [Numpy](https://www.numpy.org/)
