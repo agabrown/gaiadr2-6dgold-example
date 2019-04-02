@@ -19,7 +19,7 @@ following query:
 
 For details on the process of building the sample see the Python notebook "Build6DGoldSample.ipynb".
 
-Anthony Brown Mar 2019 - Mar 2019
+Anthony Brown Mar 2019 - Apr 2019
 """
 
 import numpy as np
@@ -67,7 +67,7 @@ def build_catalogue(args):
         print("WARNING: table contains entries without G or (BP-RP).")
     poskindata['ruwe'] = poskindata['uwe']/rwi.get_u0(poskindata['phot_g_mean_mag'], poskindata['bp_rp'])
 
-    poskindata['bp_rp_corr'], poskindata['g_rp_corr'], poskindata['bp_g_corr'] = \
+    poskindata['phot_g_mean_mag_corr'], poskindata['phot_bp_mean_mag_corr'], poskindata['phot_rp_mean_mag_corr'] = \
             correct_dr2_photometry(poskindata['phot_g_mean_mag'], poskindata['phot_bp_mean_mag'], \
             poskindata['phot_rp_mean_mag'])
 
@@ -84,8 +84,31 @@ def build_catalogue(args):
             pm_dec = poskindata['pmdec'],
             radial_velocity = poskindata['radial_velocity'])
 
-    gal_coords, galcentric_coords = transform_to_galactic(icrs_coords)
+    galactic_coords, galactocentric_cartesian, galactocentric_cylindrical = transform_to_galactic(icrs_coords)
 
+    poskindata['l'] = galactic_coords.l.to(u.deg)
+    poskindata['b'] = galactic_coords.b.to(u.deg)
+    poskindata['pml'] = galactic_coords.pm_l_cosb
+    poskindata['pmb'] = galactic_coords.pm_b
+
+    poskindata['x_gc'] = galactocentric_cartesian.x
+    poskindata['y_gc'] = galactocentric_cartesian.y
+    poskindata['z_gc'] = galactocentric_cartesian.z
+    poskindata['v_x_gc'] = galactocentric_cartesian.v_x
+    poskindata['v_y_gc'] = galactocentric_cartesian.v_y
+    poskindata['v_z_gc'] = galactocentric_cartesian.v_z
+
+    #Convert Cylindrical into conventional units (km/s for the velocities, making v_phi positive along
+    #the direction of Galactic rotation).
+    poskindata['R_gc'] = galactocentric_cylindrical.rho
+    phi = galactocentric_cylindrical.phi.to(u.deg)
+    poskindata['phi_gc'] = np.where(phi<0*u.deg, phi+360*u.deg, phi.to(u.deg))*u.deg
+    poskindata['v_R_gc'] = galactocentric_cylindrical.d_rho.to(u.km/u.s)
+    # In the literature vphi is calculated for a left-handed coordinate system! 
+    # This is for the convenience of having postive values of vphi at the position of the sun.
+    poskindata['v_phi_gc'] = -(galactocentric_cylindrical.d_phi.to(u.rad/u.yr)/u.rad * galactocentric_cylindrical.rho).to(u.km/u.s)
+
+    poskindata[clean_poskin].write("GaiaDR2-6DGold.fits", format="fits")
 
 def parseCommandLineArguments():
     """

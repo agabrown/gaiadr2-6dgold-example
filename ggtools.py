@@ -1,7 +1,7 @@
 """
 Provide functions for the building of Gaia DR2 6D Gold sample.
 
-Anthony Brown Mar 2019 - Mar 2019
+Anthony Brown Mar 2019 - Apr 2019
 """
 
 import numpy as np
@@ -61,12 +61,15 @@ def transform_to_galactic(icrs_coords):
     Returns
     -------
 
-    Galactic and Galactocentric objects containing the astrometry in Galactic coordinates and the
-    Galactocentric Cartesian coordinates.
+    Galactic and Galactocentric objects containing the astrometry in Galactic coordinates, the
+    galactocentric Cartesian coordinates, and the galactocentric cylindrical coordinates.
     """
 
-    gal_coords = icrs_coords.transform_to(Galactic())
+    galactic_coords = icrs_coords.transform_to(Galactic())
     sun_motion = CartesianDifferential(_Usun, _vc+_Vsun, _Wsun)
-    galcentric_coords = icrs_coords.transform_to(Galactocentric(galcen_distance=_Rsun, z_sun=_zsun, galcen_v_sun=sun_motion))
+    galactocentric_cartesian = icrs_coords.transform_to(Galactocentric(galcen_distance=_Rsun, z_sun=_zsun, galcen_v_sun=sun_motion))
+    galactocentric_cartesian.set_representation_cls(base='cartesian')
+    galactocentric_cylindrical = icrs_coords.transform_to(Galactocentric(galcen_distance=_Rsun, z_sun=_zsun, galcen_v_sun=sun_motion))
+    galactocentric_cylindrical.set_representation_cls(base='cylindrical')
 
-    return gal_coords, galcentric_coords
+    return galactic_coords, galactocentric_cartesian, galactocentric_cylindrical
