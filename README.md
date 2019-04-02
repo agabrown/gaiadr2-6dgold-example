@@ -25,6 +25,12 @@ This project grew out of the [Santa Barbara Gaia Sprint 2019](http://gaia.lol/20
     and drop the result in the  `data` folder. __NOTE__ FITS format is used in this example, so make sure
     to request the download tables as FITS.
 
+## Usage
+* The notebook explains how the 6D Gold sample is created from the data downloaded from the Gaia DR2
+  archive.
+* Use the command-line tool `build_6dgold_tables.py` to build the 6D Gold table(s) in FITS format so they
+  can be used easily, loaded into [topcat](http://www.star.bris.ac.uk/~mbt/topcat/), etc.
+
 ## Required python packages
 * [Numpy](https://www.numpy.org/)
 * [Matplotlib](https://matplotlib.org/)
@@ -32,6 +38,7 @@ This project grew out of the [Santa Barbara Gaia Sprint 2019](http://gaia.lol/20
 * [ruwetools](https://github.com/agabrown/gaiadr2-ruwe-tools) (Already included for convenience.)
 
 ## TODO
+* Make the resulting FITS tables available somewhere.
 * Document limitations of the gold sample
   * Examples of the selection effects introduced when filtering on data quality indicators.
   * Warning on incorrect use of parallaxes.
