@@ -30,6 +30,9 @@ This project grew out of the [Santa Barbara Gaia Sprint 2019](http://gaia.lol/20
   archive.
 * Use the command-line tool `build_6dgold_tables.py` to build the 6D Gold table(s) in FITS format so the
   Gold sample be re-used easily, loaded into [topcat](http://www.star.bris.ac.uk/~mbt/topcat/), etc.
+* __NOTE__ that in the notebook as well as in the command line tool specific choices are made for the Milky
+  parameters (such as the distance from the Sun to the Galactic centre) in the calculation of the Galactocentric
+  quantities. These choices can be adapted in the notebook and in the `ggtools.py` code.
 
 ## Required python packages
 * [Numpy](https://www.numpy.org/)
