@@ -19,7 +19,7 @@ following query:
 
 For details on the process of building the sample see the Python notebook "Build6DGoldSample.ipynb".
 
-Anthony Brown Mar 2019 - Apr 2019
+Anthony Brown Mar 2019 - Sep 2020
 """
 
 import numpy as np

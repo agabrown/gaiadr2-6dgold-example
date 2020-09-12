@@ -9,7 +9,7 @@ import astropy.units as u
 from astropy.coordinates import ICRS, Galactic, CartesianDifferential, Galactocentric
 
 # Choice for Sun's phase space coordinates for transformation to Galactocentric reference frame.
-_Rsun = 8127.0*u.pc
+_Rsun = 8178.0*u.pc
 _zsun = 20.8*u.pc
 _vc = 240.0*u.km/u.s
 _Usun = 11.1*u.km/u.s
